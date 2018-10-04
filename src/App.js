@@ -1,35 +1,32 @@
 import React, { Component } from 'react';
-import ProjectList from './components/ProjectList'
-import axios from 'axios'
+import Project from './Project'
+import Sidebar from './components/Sidebar'
 
 const API_URL = 'http://localhost:3001/api'
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      projects: [],
-    };
-
-  }
-
-  componentDidMount() {
-    axios
-      .get(`${API_URL}/projects/`)
-      .then(res => {
-        const { data } = res
-        this.setState({
-          projects: data,
-        })
-      })
-  }
-
   render() {
     return (
-      <div>
-        <ProjectList projects={ this.state.projects } />
-      </div>
+        <div className="container main">
+          <div className="columns">      
+          <Sidebar />
+          <div className="column is-9">
+            <section className="hero is-info welcome is-small">
+              <div className="hero-body">
+                <div className="container">
+                  <h1 className="title">
+                    Hello, Admin.
+                            </h1>
+                  <h2 className="subtitle">
+                    I hope you are having a great day!
+                            </h2>
+                </div>
+              </div>
+            </section>
+            </div>
+          </div>
+        </div>
+      
     );
   }
 }

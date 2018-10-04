@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ProjectList = ({ projects }) => (
-	<table>
+	<table className="table is-hoverable">
 		<thead>
 			<tr>
 				<th>Nombre</th>
