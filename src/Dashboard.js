@@ -11,19 +11,33 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import Tooltip from '@material-ui/core/Tooltip';
 import ListaPaquetes from './ListaPaquetes';
-import SimpleLineChart from './SimpleLineChart';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import DriveEta from '@material-ui/icons/DriveEta';
+import ChildCare from '@material-ui/icons/ChildCare';
+import DirectionsBike from '@material-ui/icons/DirectionsBike';
+import Commute from '@material-ui/icons/Commute';
+import School from '@material-ui/icons/School';
+import Group from '@material-ui/icons/Group';
 import SimpleTable from './SimpleTable';
 import PACKAGE from '../package.json'
 
 const drawerWidth = 270;
 
 const API_URL = PACKAGE.config.api[process.env.NODE_ENV]
+
+const iconos = {
+	"NotificationsIcon": NotificationsIcon,
+	"DriveEta": DriveEta,
+	"ChildCare": ChildCare,
+	"DirectionsBike": DirectionsBike,
+	"Commute": Commute,
+	"School": School,
+	"Group": Group
+}
 
 const styles = theme => ({
    typography: {
@@ -119,6 +133,8 @@ class Dashboard extends React.Component {
 		this.getProyectos = this.getProyectos.bind(this)
 		this.getPaquetes = this.getPaquetes.bind(this)
 		this.showProject = this.showProject.bind(this)
+		this.handleDrawerOpen = this.handleDrawerOpen.bind(this)
+		this.handleDrawerClose = this.handleDrawerClose.bind(this)
 	}
 
 	componentDidMount() {
@@ -165,13 +181,21 @@ class Dashboard extends React.Component {
       })
 	}
 
-  handleDrawerOpen = () => {
+  handleDrawerOpen() {
     this.setState({ open: true });
   };
 
-  handleDrawerClose = () => {
+  handleDrawerClose() {
     this.setState({ open: false });
-  };
+	};
+	
+	setProjectIcon(icono) {
+	let Tagname = iconos[icono];
+		return(
+			<Tagname />
+		)
+
+	}
 
   render() {
     const { classes } = this.props;
@@ -212,7 +236,9 @@ class Dashboard extends React.Component {
 										onClick={() => {this.showProject(proyecto._id, proyecto.nombre)}}
 									>
 										<IconButton aria-label={proyecto.nombre} color="inherit">
-											<NotificationsIcon />
+											{
+												this.setProjectIcon(proyecto.icono)
+											}
 										</IconButton>  
                 	</Tooltip>
 								))

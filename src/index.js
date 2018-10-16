@@ -2,5 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Dashboard from './Dashboard';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-ReactDOM.render(<Dashboard />, document.getElementById('root'));
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+    suppressDeprecationWarnings: true
+  }
+})
+
+function App() {
+  return (
+    <MuiThemeProvider theme={theme}>
+      <Dashboard />
+    </MuiThemeProvider>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
