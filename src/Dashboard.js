@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -15,11 +16,14 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Tooltip from '@material-ui/core/Tooltip';
-import { mainListItems } from './listItems';
+import ListaPaquetes from './ListaPaquetes';
 import SimpleLineChart from './SimpleLineChart';
 import SimpleTable from './SimpleTable';
+import PACKAGE from '../package.json'
 
-const drawerWidth = 240;
+const drawerWidth = 270;
+
+const API_URL = PACKAGE.config.api[process.env.NODE_ENV]
 
 const styles = theme => ({
    typography: {
@@ -102,9 +106,64 @@ const styles = theme => ({
 });
 
 class Dashboard extends React.Component {
-  state = {
-    open: true,
-  };
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			open: true,
+			proyectos: [],
+			paquetes: [],
+			nombreProyecto: '',
+		}
+
+		this.getProyectos = this.getProyectos.bind(this)
+		this.getPaquetes = this.getPaquetes.bind(this)
+		this.showProject = this.showProject.bind(this)
+	}
+
+	componentDidMount() {
+		this.getProyectos()
+		this.getPaquetes()
+	}
+
+	getProyectos() {
+		axios
+      .get(`${API_URL}/proyectos/`)
+      .then(res => {
+				const { data } = res
+	
+        this.setState({
+          proyectos: data,
+        })
+      })
+	}
+	
+	getPaquetes() {
+		axios
+      .get(`${API_URL}/proyectos/5bbbfcf4225d3d0015b172d7/paquetes`)
+      .then(res => {
+				const { data } = res
+	
+        this.setState({
+					nombreProyecto: 'eParking',
+          paquetes: data,
+        })
+      })
+	}
+
+	showProject(projectId, nombreProyecto) {
+		console.log(projectId)
+		axios
+      .get(`${API_URL}/proyectos/${projectId}/paquetes`)
+      .then(res => {
+				const { data } = res
+	
+        this.setState({
+					nombreProyecto: nombreProyecto,
+          paquetes: data,
+        })
+      })
+	}
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -138,19 +197,26 @@ class Dashboard extends React.Component {
                 <MenuIcon />
               </IconButton>
               <Typography
-                component="h1"
                 variant="h6"
                 color="inherit"
                 noWrap
                 className={classes.title}
               >
-                Arkadia
+              	{ this.state.nombreProyecto }
               </Typography>
-                <Tooltip title="Delete" >
-                  <IconButton aria-label="Delete" color="secondary">
-                    <NotificationsIcon />
-                  </IconButton>  
-                </Tooltip>
+              {
+								this.state.proyectos.map( proyecto => (
+									<Tooltip 
+										title={proyecto.nombre}
+										key={proyecto._id}
+										onClick={() => {this.showProject(proyecto._id, proyecto.nombre)}}
+									>
+										<IconButton aria-label={proyecto.nombre} color="inherit">
+											<NotificationsIcon />
+										</IconButton>  
+                	</Tooltip>
+								))
+							}
             </Toolbar>
           </AppBar>
           <Drawer
@@ -166,17 +232,10 @@ class Dashboard extends React.Component {
               </IconButton>
             </div>
             <Divider />
-            <List>{mainListItems}</List>
+						<List>
+							<ListaPaquetes paquetes={this.state.paquetes} />
+						</List>
           </Drawer>
-          <main className={classes.content}>
-            <div className={classes.appBarSpacer} />
-            <Typography variant="h4" gutterBottom component="h2">
-              Historia de Usuario
-            </Typography>
-            <div className={classes.tableContainer}>
-              <SimpleTable />
-            </div>
-          </main>
         </div>
       </Fragment>
     );

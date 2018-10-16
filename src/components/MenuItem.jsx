@@ -6,6 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 
 export default class MenuItem extends Component {
 	constructor(props) {
@@ -23,14 +24,13 @@ export default class MenuItem extends Component {
   }
 
 	render() {
-		console.log(this.props)
 		return(
 			<Fragment>
 				<ListItem button onClick={this.handleClick}>
 					<ListItemIcon>
-						<ShoppingCartIcon />
+						<DashboardIcon />
 					</ListItemIcon>
-					<ListItemText inset primary="Inbox" />
+					<ListItemText inset primary={this.props.nombre} />
 					{this.state.open ? <ExpandLess /> : <ExpandMore />}
 				</ListItem>
 				<Collapse in={this.state.open} timeout="auto" unmountOnExit>
