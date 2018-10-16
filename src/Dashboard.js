@@ -235,7 +235,16 @@ class Dashboard extends React.Component {
 						<List>
 							<ListaPaquetes paquetes={this.state.paquetes} />
 						</List>
-          </Drawer>
+					</Drawer>
+					<main className={classes.content}>	
+            <div className={classes.appBarSpacer} />	
+            <Typography variant="h4" gutterBottom component="h2">	
+              ...
+            </Typography>	
+            <div className={classes.tableContainer}>	
+              <SimpleTable />	
+            </div>	
+          </main>
         </div>
       </Fragment>
     );
