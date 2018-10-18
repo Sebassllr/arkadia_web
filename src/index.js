@@ -1,15 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Dashboard from './Dashboard';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import React from "react";
+import ReactDOM from "react-dom";
+import Dashboard from "./App";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     suppressDeprecationWarnings: true
   }
-})
+});
 
 function App() {
   return (
@@ -19,4 +18,4 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
