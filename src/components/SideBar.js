@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
@@ -18,7 +19,7 @@ import Zoom from "@material-ui/core/Zoom";
 import { iconosProyectos } from "../utils/iconos";
 import PACKAGE from "../../package.json";
 
-const drawerWidth = 270;
+const drawerWidth = 300;
 
 const API_URL = PACKAGE.config.api[process.env.NODE_ENV];
 
@@ -202,6 +203,11 @@ class SideBar extends React.Component {
                 key={proyecto._id}
                 onClick={() => {
                   this.showProject(proyecto._id, proyecto.nombre);
+                }}
+                component={Link}
+                to={{
+                  pathname: `/proyecto`,
+                  state: { proyecto }
                 }}
               >
                 <IconButton

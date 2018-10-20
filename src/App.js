@@ -4,8 +4,10 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import SideBar from "./components/SideBar";
-import Home from "./views/Home";
+import Proyecto from "./views/Proyecto";
 import Paquete from "./views/Paquete";
+import GestionarZona from "./views/eParking/GestionarZona";
+import VerZonas from "./views/eParking/VerZonas";
 
 const styles = theme => ({
   root: {
@@ -32,8 +34,10 @@ class App extends React.Component {
             <SideBar />
             <main className={classes.content}>
               <div className={classes.appBarSpacer} />
-              <Route path="/" component={Home} exact />
-              <Route path="/paquete" component={Paquete} exact />
+              <Route path="/proyecto" component={Proyecto} exact />
+              <Route path="/paquete" component={Paquete} />
+              <Route path="/eParking/gestionarZona" component={GestionarZona} />
+              <Route path="/eParking/verZonas" component={VerZonas} />
             </main>
           </div>
         </Fragment>

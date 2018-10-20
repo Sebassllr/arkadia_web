@@ -6,7 +6,13 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
+import { iconosPaquetes } from "../utils/iconos";
 import { Link } from "react-router-dom";
+
+const setPackageIcon = icono => {
+  let Paquete = iconosPaquetes[icono];
+  return <Paquete />;
+};
 
 export default class MenuItem extends Component {
   constructor(props) {
@@ -24,21 +30,27 @@ export default class MenuItem extends Component {
   }
 
   render() {
+    const { paquete, children } = this.props;
+    const { nombre, icono } = paquete;
+    const iconComponent = setPackageIcon(icono);
     return (
       <Fragment>
         <ListItem
           button
           onClick={this.handleClick}
           component={Link}
-          to={`/paquete/${this.props.nombre}`}
+          to={{
+            pathname: `/paquete`,
+            state: { paquete }
+          }}
         >
-          <ListItemIcon>{this.props.icono}</ListItemIcon>
-          <ListItemText inset primary={this.props.nombre} />
+          <ListItemIcon>{iconComponent}</ListItemIcon>
+          <ListItemText inset primary={nombre} />
           {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {this.props.children}
+            {children}
           </List>
         </Collapse>
       </Fragment>
