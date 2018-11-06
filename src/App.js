@@ -8,6 +8,8 @@ import Proyecto from "./views/Proyecto";
 import Paquete from "./views/Paquete";
 import GestionarZona from "./views/eParking/GestionarZona";
 import VerZonas from "./views/eParking/VerZonas";
+import Calendar from "./views/SocialHub/VisualizarCalendario/VisualizarCalendario";
+import EventProp from "./views/SocialHub/ProponerEvento/ProponerEvento";
 
 const styles = theme => ({
   root: {
@@ -38,6 +40,11 @@ class App extends React.Component {
               <Route path="/paquete" component={Paquete} />
               <Route path="/eParking/gestionarZona" component={GestionarZona} />
               <Route path="/eParking/verZonas" component={VerZonas} />
+              <Route
+                path="/socialHub/visualizarCalendario"
+                component={Calendar}
+              />
+              <Route path="/socialHub/proponerEvento" component={EventProp} />
             </main>
           </div>
         </Fragment>

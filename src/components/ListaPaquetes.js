@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 const getUrl = nombre => {
   let url = "";
+  console.log(nombre);
   switch (nombre) {
     default:
       url = `/historia/${nombre}`;
@@ -17,6 +18,21 @@ const getUrl = nombre => {
       break;
     case "Ver zonas de parqueo":
       url = "/eParking/verZonas";
+      break;
+    case "Visualizar calendario":
+      url = "/socialHub/visualizarCalendario";
+      break;
+    case "Proponer evento":
+      url = "/socialHub/proponerEvento";
+      break;
+    case "Caracterizar evento":
+      url = "/socialHub/caracterizarEvento";
+      break;
+    case "Votar propuesta":
+      url = "/socialHub/votarPropuesta";
+      break;
+    case "Votar propuesta":
+      url = "/socialHub/visualizarCalendario";
       break;
   }
   return url;
