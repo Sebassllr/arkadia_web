@@ -10,6 +10,7 @@ import GestionarZona from "./views/eParking/GestionarZona";
 import VerZonas from "./views/eParking/VerZonas";
 import Calendar from "./views/SocialHub/VisualizarCalendario/VisualizarCalendario";
 import EventProp from "./views/SocialHub/ProponerEvento/ProponerEvento";
+import Events from "./views/SocialHub/Propuesta/Propuesta";
 
 const styles = theme => ({
   root: {
@@ -45,6 +46,7 @@ class App extends React.Component {
                 component={Calendar}
               />
               <Route path="/socialHub/proponerEvento" component={EventProp} />
+              <Route path="/socialHub/formalizarPropuesta" component={Events} />
             </main>
           </div>
         </Fragment>

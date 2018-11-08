@@ -10,3 +10,11 @@
 .marginauto {
   margin: auto;
 }
+.backgroundWhite {
+  background: white;
+}
+.border {
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  box-shadow: 5px 10px #eeeeee;
+}

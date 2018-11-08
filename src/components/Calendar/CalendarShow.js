@@ -1,17 +1,19 @@
 import React from "react";
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import "../Calendar/Calendar.css";
+import "react-big-calendar/lib/css/react-big-calendar.css?external";
+import classes from "../Calendar/Calendar.css";
 
 const calendar = props => {
   const localizer = BigCalendar.momentLocalizer(moment);
 
   const styles = [
-    "padding",
-    "calendarHeight",
-    "calendarWidth",
-    "marginauto"
+    classes.padding,
+    classes.calendarHeight,
+    classes.calendarWidth,
+    classes.marginauto,
+    classes.backgroundWhite,
+    classes.border
   ].join(" ");
 
   return (

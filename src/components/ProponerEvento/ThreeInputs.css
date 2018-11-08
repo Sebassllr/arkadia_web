@@ -1,0 +1,15 @@
+.fullWidth {
+  width: 100%;
+  height: 25px;
+}
+.border {
+  padding: 0 5px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+}
+.onThird {
+  width: calc(33% - 25px);
+}
+.margin {
+  margin: 0 0 15px 0;
+}

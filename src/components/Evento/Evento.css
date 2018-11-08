@@ -1,0 +1,95 @@
+.box {
+  box-shadow: 5px 10px #cccccc30;
+  margin: 10px;
+  border: 1px solid #adadad;
+  border-radius: 5px;
+  min-width: 300px;
+  height: 350px;
+  cursor: pointer;
+  background: #ffffff;
+}
+.overflowAuto {
+  overflow: auto;
+}
+.descriptionHeight {
+  height: 215px;
+}
+.bottom hr {
+  border-top: 1px solid #64b2e9;
+}
+.bottom .marginTop {
+  margin: 10px 0 0 0;
+}
+.box:hover {
+  background: #fafafa;
+}
+.arvo {
+  font-family: "Arvo", serif;
+}
+.center {
+  margin: auto;
+}
+.title {
+  margin-top: 5px;
+  font-size: 30px;
+}
+.displayFlex {
+  display: flex;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 3px solid #64b2e9;
+  padding: 0;
+}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+.description {
+  display: flex;
+  text-align: justify;
+}
+.marginTop {
+  margin-top: 10px;
+}
+.marginContent {
+  margin: 5px 15px;
+}
+.item:nth-child(3n) {
+  page-break-after: always; /* CSS 2.1 syntax */
+  break-after: always; /* New syntax */
+}
+.classContainer {
+  flex-flow: row wrap;
+  width: 103%;
+}
+.scrollbarStyle::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+.scrollbarStyle::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #f5f5f5;
+}
+
+.scrollbarStyle::-webkit-scrollbar-thumb {
+  background-color: #0ae;
+
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    color-stop(0.5, rgba(255, 255, 255, 0.2)),
+    color-stop(0.5, transparent),
+    to(transparent)
+  );
+}

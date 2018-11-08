@@ -31,8 +31,8 @@ const getUrl = nombre => {
     case "Votar propuesta":
       url = "/socialHub/votarPropuesta";
       break;
-    case "Votar propuesta":
-      url = "/socialHub/visualizarCalendario";
+    case "Formalizar propuesta":
+      url = "/socialHub/formalizarPropuesta";
       break;
   }
   return url;
