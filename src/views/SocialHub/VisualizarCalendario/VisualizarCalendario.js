@@ -12,29 +12,20 @@ class VisualizarCalendario extends Component {
 
   getEvents = () => {
     axios.get(`${API_URL}/evento/`).then(res => {
-      console.log(res.data);
       this.drawEvents(res.data);
     });
   };
 
   splitDate = (date, time) => {
-    const dateT = date.split("-");
-    const timeF = time.split(":");
-    console.log(dateT);
-    console.log(timeF);
-    const finalDate = new Date(
-      dateT[0],
-      dateT[1],
-      dateT[2],
-      timeF[0],
-      timeF[1]
-    );
+    const dateT = date + " " + time;
+
+    const finalDate = new Date(dateT);
     return finalDate;
   };
 
   drawEvents = data => {
     const dates = data.map(e => {
-      const date = this.splitDate(e.date1, e.time1);
+      const date = this.splitDate(e.date, e.time);
       const finalDate = new Date(
         date.setTime(date.getTime() + 1 * 60 * 60 * 1000)
       );
@@ -44,7 +35,7 @@ class VisualizarCalendario extends Component {
         end: finalDate,
         allDay: true
       };
-      console.log(event);
+
       return event;
     });
 

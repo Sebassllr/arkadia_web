@@ -29,9 +29,9 @@ class Propuesta extends Component {
         <CardEvent
           name={event.name}
           description={event.description}
-          date={event.date1}
-          place={event.place1}
-          hour={event.time1}
+          date={event.date}
+          place={event.place}
+          hour={event.time}
         />
       );
     });

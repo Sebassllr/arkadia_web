@@ -1,6 +1,6 @@
 .title {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   color: #4d4d4d;
-  font-family: "Trocchi", serif;
   font-size: 45px;
   font-weight: normal;
   line-height: 48px;
@@ -10,11 +10,13 @@
 }
 .box h6 {
   font: 15px Tahoma, Helvetica, Arial, Sans-Serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   text-align: center;
   margin-top: 0;
   margin-bottom: 25px;
 }
 .box {
+  min-height: 100px;
   padding: 5px;
   border: 1px solid #cccccc;
   border-radius: 3px;
@@ -61,7 +63,6 @@
 .box button:hover {
   top: -10px;
   box-shadow: 0px 10px 10px rgba(10, 56, 35, 0.205);
-
   -webkit-transform: rotateX(20deg);
   -moz-transform: rotateX(20deg);
   -ms-transform: rotateX(20deg);
@@ -71,4 +72,30 @@
   top: 0px;
   box-shadow: 0px 0px 0px rgba(10, 56, 35, 0.205);
   background: rgba(10, 56, 35, 0.205);
+}
+.box button.nextButton {
+  background: rgba(201, 255, 221, 0.52) url("../../../Icons/right-arrow.png")
+    3px 1px no-repeat;
+  background-size: 27px;
+}
+.box button.previousButton {
+  background: rgba(201, 255, 221, 0.52) url("../../../Icons/right-arrow.png")
+    3px 1px no-repeat;
+  transform: rotate(180deg);
+  background-size: 27px;
+}
+.box button.previousButton:hover {
+  box-shadow: 0px -10px 0px rgba(10, 56, 35, 0.205);
+}
+.box button.addButton {
+  background: rgba(0, 255, 94, 0.8) url("../../../Icons/plus-symbol.png") 2px
+    1px no-repeat;
+  background-size: 27px;
+}
+.box button.submitBtn {
+  background: #ff5778d9 url("../../../Icons/paper-plane.png") 3px 1px no-repeat;
+  background-size: 25px;
+}
+button {
+  height: 30px;
 }
